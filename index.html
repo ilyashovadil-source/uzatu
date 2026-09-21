@@ -31,7 +31,7 @@
       justify-content: center;
       min-height: 100vh;
       background: linear-gradient(rgba(247, 243, 237, 0.85), rgba(247, 243, 237, 0.85)), 
-                  url('https://i.ibb.co/L8G223X/wedding-bg.jpg') no-repeat center center fixed;
+                  url('bg.jpg') no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -353,7 +353,7 @@
   </div>
 
   <audio id="bgMusic" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+    <source src="music.mp3" type="audio/mp3">
   </audio>
 
   <button class="music-btn" id="musicToggle" onclick="toggleMusic()">🎵</button>
@@ -467,8 +467,7 @@
   </div>
 
   <script>
-    // ВАШ НОМЕР WHATSAPP В МЕЖДУНАРОДНОМ ФОРМАТЕ
-    const WHATSAPP_PHONE = "77083958053";
+    const WHATSAPP_PHONE = "77479188199";
 
     const music = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicToggle");
@@ -496,7 +495,6 @@
       isPlaying = !isPlaying;
     }
 
-    // НАДЕЖНЫЙ ФИКСИРОВАННЫЙ ТАЙМЕР (28 ноября 2026, 13:00)
     const targetDate = new Date("2026-11-28T13:00:00+05:00").getTime();
 
     function updateCountdown() {
