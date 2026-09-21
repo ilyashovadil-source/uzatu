@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Marck+Script&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -30,7 +30,8 @@
       display: flex;
       justify-content: center;
       min-height: 100vh;
-      background: linear-gradient(rgba(247, 243, 237, 0.85), rgba(247, 243, 237, 0.85)), 
+      /* Прозрачность слоя снижена до 0.35, чтобы фон стал ярким */
+      background: linear-gradient(rgba(247, 243, 237, 0.35), rgba(247, 243, 237, 0.35)), 
                   url('bg.jpg') no-repeat center center fixed;
       background-size: cover;
     }
@@ -42,7 +43,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #f7f3ed;
+      background: rgba(247, 243, 237, 0.95);
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -114,13 +115,13 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(5px);
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(8px);
       margin-bottom: 22px;
       padding: 30px 22px;
       border-radius: 20px;
       border: 1px solid var(--border);
-      box-shadow: 0 8px 25px rgba(122, 50, 56, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     }
 
     .flower-dec {
@@ -131,8 +132,7 @@
     }
 
     .main-title {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-family: 'Marck Script', cursive;
       font-size: 54px;
       color: var(--primary);
       line-height: 1.1;
@@ -157,20 +157,19 @@
     }
 
     .bride-name {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-family: 'Marck Script', cursive;
       font-size: 48px;
       color: var(--primary);
       margin: 5px 0;
+      line-height: 1.1;
     }
 
     .sec-title {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 36px;
+      font-family: 'Marck Script', cursive;
+      font-size: 40px;
       color: var(--primary);
       margin-bottom: 8px;
-      line-height: 1.2;
+      line-height: 1.1;
     }
 
     .event-date {
@@ -337,7 +336,8 @@
 
     .footer-text {
       font-size: 18px;
-      color: var(--text);
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
       margin-top: 20px;
       line-height: 1.6;
     }
@@ -347,7 +347,7 @@
 
   <div class="welcome-overlay" id="welcomeOverlay">
     <div class="flower-dec">❀ ❁ ❀</div>
-    <div class="main-title" style="font-size:42px;">Гүлнұр</div>
+    <div class="main-title" style="font-size:48px;">Гүлнұр</div>
     <div class="subtitle">Шақыру / Приглашение</div>
     <button class="open-btn" onclick="openInvitation()">ШАҚЫРУДЫ АШУ ✉️</button>
   </div>
@@ -461,7 +461,7 @@
 
     <div class="footer-text">
       Сіздердің ақ тілектеріңіз бен ақ ниеттеріңіз<br>біздің қуанышымызды еселей түседі! 🤍<br><br>
-      <b style="color: var(--primary);">Гүлнұрдың ұзату тойында кездескенше!</b>
+      <b style="color: #ffffff;">Гүлнұрдың ұзату тойында кездескенше!</b>
     </div>
 
   </div>
