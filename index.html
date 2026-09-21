@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Гүлнұр - Qyz Uzatu</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #7a3238;
+      --gold: #b38e5d;
+      --text: #4a3f3a;
+      --text-light: #6e6259;
+      --border: #e6ded5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      color: var(--text);
+      font-family: 'Cormorant Garamond', serif;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(rgba(247, 243, 237, 0.85), rgba(247, 243, 237, 0.85)), 
+                  url('https://i.ibb.co/L8G223X/wedding-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Экран приветствия */
+    .welcome-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f7f3ed;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .welcome-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .open-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(122, 50, 56, 0.3);
+      margin-top: 25px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      padding: 20px 15px 40px;
+      position: relative;
+    }
+
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--gold);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      font-size: 20px;
+    }
+
+    .music-btn.playing {
+      animation: spin 4s linear infinite;
+      background: var(--primary);
+      color: #fff;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(5px);
+      margin-bottom: 22px;
+      padding: 30px 22px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 25px rgba(122, 50, 56, 0.08);
+    }
+
+    .flower-dec {
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+    }
+
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 54px;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-top: 5px;
+    }
+
+    .subtitle {
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 6px;
+      font-size: 13px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+
+    .invitation-text {
+      font-size: 19px;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 15px 0;
+    }
+
+    .bride-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 48px;
+      color: var(--primary);
+      margin: 5px 0;
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 36px;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .event-date {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .calendar {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+    }
+
+    .cal-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 8px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cal-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px 0;
+      color: var(--text-light);
+    }
+
+    .cal-day {
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cal-day.active {
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      font-weight: bold;
+      width: 28px;
+      height: 28px;
+      margin: 0 auto;
+    }
+
+    .timer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+
+    .timer-grid {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .timer-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .timer-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--primary);
+      background: #faf7f2;
+      width: 48px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .timer-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 12px;
+    }
+
+    .input-field, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background-color: #faf7f2;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      color: var(--text);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 75px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      background: #faf7f2;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .radio-option input {
+      margin-right: 10px;
+      accent-color: var(--primary);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(122, 50, 56, 0.25);
+    }
+
+    .gis-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    .footer-text {
+      font-size: 18px;
+      color: var(--text);
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="welcome-overlay" id="welcomeOverlay">
+    <div class="flower-dec">❀ ❁ ❀</div>
+    <div class="main-title" style="font-size:42px;">Гүлнұр</div>
+    <div class="subtitle">Шақыру / Приглашение</div>
+    <button class="open-btn" onclick="openInvitation()">ШАҚЫРУДЫ АШУ ✉️</button>
+  </div>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+  </audio>
+
+  <button class="music-btn" id="musicToggle" onclick="toggleMusic()">🎵</button>
+
+  <div class="container">
+
+    <div class="card" style="margin-top: 20px;">
+      <div class="flower-dec">❀ ❁ ❀</div>
+      <div class="main-title">Гүлнұр</div>
+      <div class="subtitle">QYZ UZATU</div>
+
+      <div class="invitation-text">
+        Құрметті ағайын-туыс, бауырлар,<br>
+        құда-жекжат, нағашы-жиен,<br>
+        бөле-құрбы, дос-жарандар,<br>
+        әріптестер, көршілер!
+      </div>
+
+      <div class="invitation-text" style="margin-top:10px;">
+        Сіздерді аяулы қызымыз
+      </div>
+
+      <div class="bride-name">Гүлнұрдың</div>
+
+      <div class="invitation-text">
+        ұзату тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">Той салтанаты:</div>
+      <div class="event-date">28 ҚАРАША 2026 ЖЫЛ<br>САҒАТ 13:00</div>
+
+      <div class="calendar">
+        <div class="cal-header">
+          <div>ДС</div><div>СС</div><div>СР</div><div>БС</div><div>ЖМ</div><div>СБ</div><div>ЖБ</div>
+        </div>
+        <div class="cal-body">
+          <div></div><div></div><div></div><div></div><div></div><div></div><div>1</div>
+          <div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div>
+          <div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+          <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div>
+          <div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
+          <div><div class="cal-day active">28</div></div><div>29</div>
+          <div>30</div>
+        </div>
+      </div>
+
+      <div class="timer-title">Той салтанатына дейін:</div>
+      <div class="timer-grid" id="countdown">
+        <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">КҮН</div></div>
+        <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">САҒАТ</div></div>
+        <div class="timer-item"><div class="timer-number" id="minutes">00</div><div class="timer-label">МИНУТ</div></div>
+        <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">СЕКУНД</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">Мекен-жайымыз:</div>
+      <div class="invitation-text">
+        <b>EtnoFarabi</b><br>
+        Мұқанова көшесі, 28/1<br>
+        Қарағанды қаласы
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=EtnoFarabi%2C%20Mukhanova%2028%2F1%2C%20Karaganda" target="_blank" class="gis-btn">
+        🗺 КАРТАДАН КӨРУ
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="sec-title">Қуанышымызға ортақ болыңыздар!</div>
+      <p style="font-size:15px; color: var(--text-light); margin-bottom:18px;">
+        Төмендегі форманы толтырып, тойға қатысуыңызды растауыңызды сұраймыз:
+      </p>
+
+      <div class="form-group">
+        <input type="text" id="guestName" class="input-field" placeholder="Аты-жөніңіз">
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="partnerName" class="input-field" placeholder="Жұбайыңыздың аты-жөні">
+      </div>
+
+      <div class="form-group">
+        <label class="radio-option">
+          <input type="radio" name="attendance" value="Әрине, келемін" checked>
+          Әрине, келемін
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="attendance" value="Жұбайыммен барамын">
+          Жұбайыммен барамын
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="attendance" value="Өкінішке орай, келе алмаймын">
+          Өкінішке орай, келе алмаймын
+        </label>
+      </div>
+
+      <div class="form-group">
+        <textarea id="wishes" placeholder="Тойға тілегіңіз..."></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="sendToWhatsApp()">Жауапты жіберу</button>
+    </div>
+
+    <div class="footer-text">
+      Сіздердің ақ тілектеріңіз бен ақ ниеттеріңіз<br>біздің қуанышымызды еселей түседі! 🤍<br><br>
+      <b style="color: var(--primary);">Гүлнұрдың ұзату тойында кездескенше!</b>
+    </div>
+
+  </div>
+
+  <script>
+    // ВАШ НОМЕР WHATSAPP В МЕЖДУНАРОДНОМ ФОРМАТЕ
+    const WHATSAPP_PHONE = "77083958053";
+
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicToggle");
+    let isPlaying = false;
+
+    function openInvitation() {
+      document.getElementById("welcomeOverlay").classList.add("hidden");
+      music.play().then(() => {
+        isPlaying = true;
+        musicBtn.classList.add("playing");
+        musicBtn.innerText = "🎶";
+      }).catch(e => console.log(e));
+    }
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        musicBtn.classList.remove("playing");
+        musicBtn.innerText = "🎵";
+      } else {
+        music.play();
+        musicBtn.classList.add("playing");
+        musicBtn.innerText = "🎶";
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // НАДЕЖНЫЙ ФИКСИРОВАННЫЙ ТАЙМЕР (28 ноября 2026, 13:00)
+    const targetDate = new Date("2026-11-28T13:00:00+05:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+        document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+        document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+      } else {
+        document.getElementById("countdown").innerHTML = "<div style='color:var(--primary); font-weight:bold;'>Той басталды!</div>";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function sendToWhatsApp() {
+      const name = document.getElementById('guestName').value.trim();
+      const partner = document.getElementById('partnerName').value.trim();
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const wishes = document.getElementById('wishes').value.trim();
+
+      if (!name) {
+        alert('Өтініш, аты-жөніңізді енгізіңіз!');
+        return;
+      }
+
+      let text = `Сәлеметсіз бе! Мен "Гүлнұрдың ұзату тойы" шақыруы бойынша жауап беремін:\n\n`;
+      text += `👤 Аты-жөні: ${name}\n`;
+      if (partner) text += `👥 Жұбайы: ${partner}\n`;
+      text += `📌 Жауабы: ${attendance}\n`;
+      if (wishes) text += `✍️ Тілегі: ${wishes}\n`;
+
+      const encodedText = encodeURIComponent(text);
+      window.location.href = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedText}`;
+    }
+  </script>
+</body>
+</html>
