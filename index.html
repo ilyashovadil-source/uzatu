@@ -7,16 +7,15 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #8C6D58;
-      --accent: #B38E5D;
-      --bg-color: #FBF8F3;
-      --text: #4A423E;
-      --text-light: #7A706A;
-      --border: #E8E1D7;
+      --primary: #7a3238;
+      --gold: #b38e5d;
+      --text: #4a3f3a;
+      --text-light: #6e6259;
+      --border: #e6ded5;
     }
 
     * {
@@ -31,7 +30,8 @@
       display: flex;
       justify-content: center;
       min-height: 100vh;
-      background: var(--bg-color) url('bg.jpg') no-repeat center top fixed;
+      background: linear-gradient(rgba(247, 243, 237, 0.85), rgba(247, 243, 237, 0.85)), 
+                  url('bg.jpg') no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -42,7 +42,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #FAF7F2;
+      background: #f7f3ed;
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -60,28 +60,28 @@
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 14px 34px;
+      padding: 16px 36px;
       border-radius: 30px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      letter-spacing: 2px;
+      font-size: 14px;
+      letter-spacing: 3px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(140, 109, 88, 0.25);
+      box-shadow: 0 10px 25px rgba(122, 50, 56, 0.3);
       margin-top: 25px;
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.04); }
+      50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
 
     .container {
       width: 100%;
-      max-width: 440px;
+      max-width: 480px;
       text-align: center;
-      padding: 15px 12px 40px;
+      padding: 20px 15px 40px;
       position: relative;
     }
 
@@ -91,16 +91,16 @@
       right: 20px;
       z-index: 999;
       background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--accent);
-      width: 42px;
-      height: 42px;
+      border: 1px solid var(--gold);
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      font-size: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      font-size: 20px;
     }
 
     .music-btn.playing {
@@ -114,24 +114,25 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.93);
-      backdrop-filter: blur(6px);
-      margin-bottom: 20px;
-      padding: 32px 20px;
-      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(5px);
+      margin-bottom: 22px;
+      padding: 30px 22px;
+      border-radius: 20px;
       border: 1px solid var(--border);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 8px 25px rgba(122, 50, 56, 0.08);
     }
 
-    .flower-icon {
-      width: 60px;
-      height: auto;
-      margin-bottom: 12px;
-      opacity: 0.85;
+    .flower-dec {
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: 3px;
     }
 
     .main-title {
-      font-family: 'Marck Script', cursive;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
       font-size: 54px;
       color: var(--primary);
       line-height: 1.1;
@@ -140,56 +141,41 @@
 
     .subtitle {
       font-family: 'Montserrat', sans-serif;
-      letter-spacing: 5px;
-      font-size: 12px;
-      color: var(--accent);
+      letter-spacing: 6px;
+      font-size: 13px;
+      color: var(--gold);
       text-transform: uppercase;
-      margin-top: 10px;
-      margin-bottom: 15px;
+      margin-top: 5px;
+      margin-bottom: 20px;
     }
 
     .invitation-text {
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: 19px;
+      line-height: 1.7;
       color: var(--text);
-      margin: 12px 0;
-      font-weight: 500;
+      margin: 15px 0;
     }
 
     .bride-name {
-      font-family: 'Marck Script', cursive;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
       font-size: 48px;
       color: var(--primary);
-      margin: 8px 0;
-      line-height: 1.1;
+      margin: 5px 0;
     }
 
     .sec-title {
-      font-family: 'Marck Script', cursive;
-      font-size: 40px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 36px;
       color: var(--primary);
-      margin-bottom: 6px;
-      line-height: 1.1;
-    }
-
-    .gallery-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 15px;
-    }
-
-    .gallery-img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      object-fit: cover;
+      margin-bottom: 8px;
+      line-height: 1.2;
     }
 
     .event-date {
       font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--text);
       letter-spacing: 1px;
@@ -198,7 +184,7 @@
 
     .calendar {
       width: 100%;
-      max-width: 290px;
+      max-width: 300px;
       margin: 0 auto 10px;
       font-family: 'Montserrat', sans-serif;
       font-size: 13px;
@@ -208,29 +194,29 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       font-weight: 600;
-      color: var(--accent);
+      color: var(--gold);
       margin-bottom: 8px;
-      padding-bottom: 6px;
+      padding-bottom: 5px;
       border-bottom: 1px solid var(--border);
     }
 
     .cal-body {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 6px 0;
+      gap: 5px 0;
       color: var(--text-light);
     }
 
     .cal-day {
-      padding: 4px 0;
+      padding: 5px 0;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .cal-day.active {
-      border: 1px solid var(--primary);
-      color: var(--primary);
+      background-color: var(--primary);
+      color: #fff;
       border-radius: 50%;
       font-weight: bold;
       width: 28px;
@@ -242,7 +228,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 11px;
       letter-spacing: 2px;
-      color: var(--accent);
+      color: var(--gold);
       margin-top: 20px;
       text-transform: uppercase;
     }
@@ -250,7 +236,7 @@
     .timer-grid {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       margin-top: 12px;
     }
 
@@ -262,16 +248,16 @@
 
     .timer-number {
       font-family: 'Montserrat', sans-serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 500;
       color: var(--primary);
-      background: #FAF7F2;
-      width: 46px;
-      height: 42px;
+      background: #faf7f2;
+      width: 48px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid var(--border);
     }
 
@@ -289,10 +275,10 @@
 
     .input-field, textarea {
       width: 100%;
-      padding: 12px 14px;
+      padding: 12px 15px;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      background-color: #FAF7F2;
+      border-radius: 10px;
+      background-color: #faf7f2;
       font-family: 'Cormorant Garamond', serif;
       font-size: 17px;
       color: var(--text);
@@ -301,19 +287,18 @@
 
     textarea {
       resize: vertical;
-      height: 70px;
+      height: 75px;
     }
 
     .radio-option {
       display: flex;
       align-items: center;
       padding: 10px 12px;
-      background: #FAF7F2;
+      background: #faf7f2;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       margin-bottom: 8px;
       cursor: pointer;
-      font-size: 16px;
     }
 
     .radio-option input {
@@ -329,12 +314,12 @@
       padding: 14px;
       border-radius: 25px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
       cursor: pointer;
       margin-top: 10px;
-      box-shadow: 0 4px 12px rgba(140, 109, 88, 0.2);
+      box-shadow: 0 4px 12px rgba(122, 50, 56, 0.25);
     }
 
     .gis-btn {
@@ -342,12 +327,12 @@
       background: var(--primary);
       color: #ffffff;
       text-decoration: none;
-      padding: 12px 26px;
+      padding: 12px 28px;
       border-radius: 25px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 1px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .footer-text {
@@ -361,11 +346,8 @@
 <body>
 
   <div class="welcome-overlay" id="welcomeOverlay">
-    <svg class="flower-icon" viewBox="0 0 100 100" fill="none" stroke="#8C6D58" stroke-width="1.5">
-      <path d="M50 20 C45 35, 35 45, 20 50 C35 55, 45 65, 50 80 C55 65, 65 55, 80 50 C65 45, 55 35, 50 20 Z" />
-      <circle cx="50" cy="50" r="3" fill="#8C6D58"/>
-    </svg>
-    <div class="main-title" style="font-size:52px;">Гүлнұр</div>
+    <div class="flower-dec">❀ ❁ ❀</div>
+    <div class="main-title" style="font-size:42px;">Гүлнұр</div>
     <div class="subtitle">Шақыру / Приглашение</div>
     <button class="open-btn" onclick="openInvitation()">ШАҚЫРУДЫ АШУ ✉️</button>
   </div>
@@ -378,11 +360,8 @@
 
   <div class="container">
 
-    <div class="card" style="margin-top: 15px;">
-      <svg class="flower-icon" viewBox="0 0 100 100" fill="none" stroke="#8C6D58" stroke-width="1.5">
-        <path d="M50 20 C45 35, 35 45, 20 50 C35 55, 45 65, 50 80 C55 65, 65 55, 80 50 C65 45, 55 35, 50 20 Z" />
-        <circle cx="50" cy="50" r="3" fill="#8C6D58"/>
-      </svg>
+    <div class="card" style="margin-top: 20px;">
+      <div class="flower-dec">❀ ❁ ❀</div>
       <div class="main-title">Гүлнұр</div>
       <div class="subtitle">QYZ UZATU</div>
 
@@ -401,14 +380,6 @@
 
       <div class="invitation-text">
         ұзату тойына арналған ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="sec-title">Суреттер:</div>
-      <div class="gallery-grid">
-        <img src="photo1.jpg" class="gallery-img" alt="Сурет 1">
-        <img src="photo2.jpg" class="gallery-img" alt="Сурет 2">
       </div>
     </div>
 
@@ -454,7 +425,7 @@
 
     <div class="card">
       <div class="sec-title">Қуанышымызға ортақ болыңыздар!</div>
-      <p style="font-size:15px; color: var(--text-light); margin-bottom:16px;">
+      <p style="font-size:15px; color: var(--text-light); margin-bottom:18px;">
         Төмендегі форманы толтырып, тойға қатысуыңызды растауыңызды сұраймыз:
       </p>
 
